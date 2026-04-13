@@ -81,7 +81,7 @@ graph TB
 
 ## Components
 
-### Soliplex (Backend)
+### [Soliplex](https://github.com/soliplex/soliplex) (Backend)
 
 The core backend service built with FastAPI and Python. Soliplex orchestrates
 AI agents, RAG retrieval, and real-time chat across isolated room
@@ -95,7 +95,7 @@ environments.
 - Quiz system with LLM-based evaluation
 - 100% unit test branch coverage
 
-### Frontend
+### [Frontend](https://github.com/soliplex/frontend)
 
 A cross-platform Flutter application that serves as the primary user
 interface. Runs on Android, iOS, macOS, Web, Linux, and Windows.
@@ -107,7 +107,7 @@ interface. Runs on Android, iOS, macOS, Web, Linux, and Windows.
 - Responsive Material Design 3 layouts for mobile through desktop
 - Modular shell architecture with composable feature modules
 
-### Ingester Agents
+### [Ingester Agents](https://github.com/soliplex/ingester-agents)
 
 A multi-source document discovery and delivery system. Ingester Agents
 connect to diverse origins and feed documents into the ingestion pipeline.
@@ -118,7 +118,7 @@ connect to diverse origins and feed documents into the ingestion pipeline.
 - Async-first architecture with retry logic and exponential backoff
 - FastAPI REST API and Typer CLI
 
-### Soliplex Ingester
+### [Soliplex Ingester](https://github.com/soliplex/ingester)
 
 The document processing engine that transforms raw files into indexed,
 searchable vector data.
@@ -129,7 +129,7 @@ searchable vector data.
 - Parameter set management for tuning chunking and embedding
 - PostgreSQL metadata storage with LanceDB vector storage
 
-### PDF Splitter
+### [PDF Splitter](https://github.com/soliplex/pdf-splitter)
 
 A split-process-merge pipeline for converting large PDFs into structured
 Docling documents through intelligent chunking and parallel processing.
@@ -143,8 +143,8 @@ Docling documents through intelligent chunking and parallel processing.
 
 | Library | Role |
 |---|---|
-| **Haiku RAG** | RAG engine with hybrid vector + full-text search, agentic QA, and multi-provider embeddings |
-| **Haiku Skills** | Modular skill system for Pydantic AI agents with sub-agent execution and AG-UI streaming |
+| [**Haiku RAG**](https://github.com/ggozad/haiku.rag) | RAG engine with hybrid vector + full-text search, agentic QA, and multi-provider embeddings |
+| [**Haiku Skills**](https://github.com/ggozad/haiku.skills) | Modular skill system for Pydantic AI agents with sub-agent execution and AG-UI streaming |
 | **Docling** | Document conversion and structural extraction for PDFs and other formats |
 | **Pydantic AI** | Agent framework with function calling, tool integration, and multi-provider LLM support |
 | **LanceDB** | Embedded vector database for semantic search and retrieval |
