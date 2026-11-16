@@ -33,18 +33,18 @@ graph TB
     
     subgraph "Storage"
         LDB["LanceDB<br/>(Vectors)"]
-        PG["PostgreSQL / SQLite<br/>(Metadata)"]
+        PG["PostgreSQL / SQLite<br/>(State)"]
     end
     subgraph LLM["LLM Providers"]
         OL["Ollama"]
         OA["OpenAI"]
         GE["Gemini"]
         AN["Anthropic"]
+        VL["VLLM"]
     end
         subgraph "Ingestion Pipeline"
         IA["Ingester Agents"]
-        SI["Soliplex Ingester"]
-        PS["PDF Splitter"]
+        SI["Hauku-Rag Ingester"]        
         DL["Docling"]
     end
     subgraph "Document Sources"
@@ -69,8 +69,7 @@ graph TB
     WD --> IA
     WEB --> IA
     S3 --> IA
-    IA -->|"Discovers & fetches"| SI
-    PS -->|"Splits large PDFs"| SI
+    IA -->|"Discovers & fetches"| SI    
     SI -->|"Parse, chunk, embed"| DL
 
     PAI <-->|"Inference"| LLM
@@ -118,26 +117,15 @@ connect to diverse origins and feed documents into the ingestion pipeline.
 - Async-first architecture with retry logic and exponential backoff
 - FastAPI REST API and Typer CLI
 
-### [Soliplex Ingester](https://github.com/soliplex/ingester)
 
-The document processing engine that transforms raw files into indexed,
-searchable vector data.
+### [Concierge](https://github.com/soliplex/soliplex-concierge)
 
-- Five-stage pipeline: validate, parse, chunk, embed, store
-- Web UI and REST API for monitoring and managing ingestion runs
-- Async worker-based processing tested at scale (1000+ page PDFs)
-- Parameter set management for tuning chunking and embedding
-- PostgreSQL metadata storage with LanceDB vector storage
+Concierge provides an extension for LLM-driven, on-demand room requests: 
+users chat with a self-serve "about" room to request 
+**access to a non-public room** or the **creation of a new room**, 
+and the concierge files each request as a tracking issue on a Gitea
+repository for an administrator to resolve.
 
-### [PDF Splitter](https://github.com/soliplex/pdf-splitter)
-
-A split-process-merge pipeline for converting large PDFs into structured
-Docling documents through intelligent chunking and parallel processing.
-
-- Bookmark-aware segmentation with multiple splitting strategies
-- Parallel processing via ProcessPoolExecutor with strict memory isolation
-- Document reassembly preserving DOM structure, provenance, and page offsets
-- CLI tools for analysis, chunking, conversion, and validation
 
 ## Key Libraries
 
